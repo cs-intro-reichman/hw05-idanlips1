@@ -28,7 +28,7 @@ public class GameOfLife {
 	private static void test2(String fileName) {
 		int[][] board = read(fileName);
 		System.out.println(cellValue(board, 1, 2));
-		System.out.println(count(board, 1, 1));
+		System.out.println(count(board, 1, 1)+ ",");
 
 		//// Write here code that tests that the count and cellValue functions
 		//// are working properly, and returning the correct values.
