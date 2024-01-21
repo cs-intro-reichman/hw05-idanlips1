@@ -12,9 +12,9 @@ public class GameOfLife {
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
 		//// test1("square.dat");
-		 test2("line.dat");
+		/// test2("line.dat");
 		////test3("line.dat", 3);
-		//// play("line.dat");
+		play("line.dat");
 	}
 
 	// Reads the data file and prints the initial board.
@@ -72,8 +72,8 @@ public class GameOfLife {
 		In in = new In(fileName); // Constructs an In object for reading the input file
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
-		int[][] board = new int[rows][cols];
-		for (int i = 0; i < board[0].length -1; i++) {
+		int[][] board = new int[rows+2][cols+2];
+		for (int i = 1; i < board[0].length -1; i++) {
 			String currentRow = in.readLine();
 			for (int j = 0; j < currentRow.length(); j++) {
 				if (currentRow != "") {
