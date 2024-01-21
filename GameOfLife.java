@@ -12,9 +12,9 @@ public class GameOfLife {
 		//// Uncomment the test that you want to execute, and re-compile.
 		//// (Run one test at a time).
 		//// test1("square.dat");
-		//// test2("square.dat");
+		 test2("line.dat");
 		////test3("line.dat", 3);
-		 play("line.dat");
+		//// play("line.dat");
 	}
 
 	// Reads the data file and prints the initial board.
@@ -27,7 +27,7 @@ public class GameOfLife {
 	// the count and cellValue functions.
 	private static void test2(String fileName) {
 		int[][] board = read(fileName);
-		System.out.println(cellValue(board, 1, 2));
+		System.out.println(cellValue(board, 2, 2));
 		System.out.println(count(board, 1, 1));
 
 		//// Write here code that tests that the count and cellValue functions
@@ -123,15 +123,12 @@ public class GameOfLife {
 			} else if (count(board, i, j) == 2 || count(board, i, j) == 3){
 				return 1;
 			}
-		} else if (board[i][j] == 0) {
+		} else 
 			if (count(board, i, j) == 3) {
 				return 1;
-			} else {
-				return 0;
-			}
-		}
-
-		return newValue;
+			} 
+				
+		return 0;
 	}
 
 	// Counts and returns the number of living neighbors of the given cell
@@ -140,32 +137,15 @@ public class GameOfLife {
 	// Assumes that j is at least 1 and at most the number of columns in the board -
 	// 1.
 	public static int count(int[][] board, int i, int j) {
-		int countAlive = 0;
-		if (board[i - 1][j - 1] == 1) {
-			countAlive++;
+		int count = 0;
+		for (int row = i - 1; row <= i + 1; row++) {
+			for (int col = j - 1; col <= j + 1; col++) {
+				if (board[row][col] == 1 && !(row == i && col == j)) {
+					count++;
+				}
+			}
 		}
-		if (board[i - 1][j] == 1) {
-			countAlive++;
-		}
-		if (board[i - 1][j + 1] == 1) {
-			countAlive++;
-		}
-		if (board[i][j + 1] == 1) {
-			countAlive++;
-		}
-		if (board[i + 1][j + 1] == 1) {
-			countAlive++;
-		}
-		if (board[i + 1][j] == 1) {
-			countAlive++;
-		}
-		if (board[i + 1][j - 1] == 1) {
-			countAlive++;
-		}
-		if (board[i][j - 1] == 1) {
-			countAlive++;
-		}
-		return countAlive;
+		return count;
 	}
 
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
